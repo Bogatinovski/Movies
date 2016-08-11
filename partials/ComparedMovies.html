@@ -1,0 +1,104 @@
+<div class="container">
+    <div class="text-center">
+        <h2>Movie Mania</h2>
+        <h5>when you want to surf movies!!!</h5>
+    </div>
+         <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#/" ng-click="reset()">Home</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">Select by rating <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="https://google.com" target="_blank">5 Star</a></li>
+                            <li><a href="https://yahoo.com" target="_blank">4 Star</a></li>
+                            <li><a href="https://cnn.com" target="_blank">3 Star</a></li>
+                            <li><a href="https://refinery29.com" target="_blank">2 Star</a></li>
+                            <li><a href="http://www.fastcompany.com/">1 Star</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                    <!-- Three Character Search -->
+                        <input type="text" class="form-control" placeholder="Search" data-ng-model="search"></input>
+                    </div>
+                    <!-- <button type="submit" class="btn btn-default">Submit</button> -->
+                <button class="btn btn-default"  ng-click="compare()">Compare</button>
+                </form>
+
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+<div class="container" style="width: 50%;
+    margin: 0 0;">
+    <div class="container" id="xyz-carousel">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-3" Style="overflow: hidden;"
+                 data-ng-repeat="movie in comparedMovies">
+                <div class="thumbnail">
+                    <img src="https://s-media-cache-ak0.pinimg.com/736x/ef/17/c8/ef17c8ccacc3200275ea9069f1015eda.jpg"
+                         style="width: 45%; height: 45%" alt="">
+
+                    <div class="caption">
+                        {{custom}}
+                        <h4>Movie Name: {{movie.Name}}</h4>
+                        <h6>Rank: {{movie.Rank}}</h6>
+
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" data-ng-model="movie.checked"> Compare Movie</input>
+                            </label>
+                    </div>
+                    <!--<a class="btn btn-primary btn-xs" type="button" data-toggle="collapse"-->
+                    <!--data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">-->
+                    <!--More / Less-->
+                    <!--</a>-->
+                    <button ng-click="toggleDetails(movie)" class="btn btn-primary btn-xs">More / Less</button>
+                    <a class="btn btn-primary btn-xs" role="button">Book</a>
+                    <div style="max-height:334px; overflow-y:auto;" ng-hide="movie.Details.isHidden">
+                        <h5>Director:</h5>
+
+                        <p>
+                            {{movie.Details.Director}}
+                        </p>
+                        <h5>Genre:</h5>
+
+                        <p>
+                            <span ng-repeat="genre in movie.Details.Genres"> {{genre}} &nbsp;</span>
+                        </p>
+                        <h5>Duration:</h5>
+
+                        <p>{{movie.Details.Duration}}</p>
+                        <h5>Actors:</h5>
+
+                        <P>
+                            <span ng-repeat="actor in movie.Details.Actors"> {{actor}} &nbsp;</span>
+                        </P>
+                        <h5>Description:</h5>
+
+                        <p>{{movie.Details.Description}}</p>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- End row -->
